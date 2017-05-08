@@ -6,7 +6,7 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>    
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>    
+    <projectUrl>https://github.com/adamosoftware/WinFormsExt</projectUrl>    
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extension methods for WinForms apps</description>    
     <copyright>Copyright © Adam O'Neil Software 2017</copyright>
