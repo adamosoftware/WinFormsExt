@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AdamOneilSoftware
@@ -38,5 +39,19 @@ namespace AdamOneilSoftware
 			T checkNode = node as T;
 			if (checkNode != null) results.Add(checkNode);
 		}
+
+        public static void Execute(this TreeView treeView, Action<TreeNode> action, Func<TreeNode, bool> filter = null)
+        {
+            foreach (TreeNode node in treeView.Nodes) ExecuteR(node, action, filter);            
+        }
+
+        private static void ExecuteR(TreeNode node, Action<TreeNode> action, Func<TreeNode, bool> filter = null)
+        {
+            if (filter?.Invoke(node) ?? true)
+            {
+                action.Invoke(node);
+                foreach (TreeNode childNode in node.Nodes) ExecuteR(childNode, action, filter);
+            }
+        }
 	}
 }
