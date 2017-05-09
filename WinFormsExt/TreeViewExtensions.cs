@@ -45,6 +45,11 @@ namespace AdamOneilSoftware
             foreach (TreeNode node in treeView.Nodes) ExecuteR(node, action, filter);            
         }
 
+        public static void Execute(this TreeNode treeNode, Action<TreeNode> action, Func<TreeNode, bool> filter = null)
+        {
+            foreach (TreeNode node in treeNode.Nodes) ExecuteR(node, action, filter);
+        }
+
         private static void ExecuteR(TreeNode node, Action<TreeNode> action, Func<TreeNode, bool> filter = null)
         {
             if (filter?.Invoke(node) ?? true)
