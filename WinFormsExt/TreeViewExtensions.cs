@@ -59,6 +59,11 @@ namespace AdamOneilSoftware
             }
         }
 
+        public static void CheckChildNodes(this TreeNode treeNode, bool isChecked, Func<TreeNode, bool> filter = null)
+        {
+            Execute(treeNode, (nd) => nd.Checked = isChecked, filter);
+        }
+
         public static T FindParentNode<T>(this TreeNode node) where T : TreeNode
         {
             TreeNode test = node;
