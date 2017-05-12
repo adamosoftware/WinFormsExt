@@ -58,5 +58,19 @@ namespace AdamOneilSoftware
                 foreach (TreeNode childNode in node.Nodes) ExecuteR(childNode, action, filter);
             }
         }
+
+        public static T FindParentNode<T>(this TreeNode node) where T : TreeNode
+        {
+            TreeNode test = node;
+            while (true)
+            {
+                TreeNode parent = test.Parent;
+                if (parent == null) break;
+                T result = parent as T;
+                if (result != null) return result;
+                test = parent;
+            }
+            return null;
+        }
     }
 }
