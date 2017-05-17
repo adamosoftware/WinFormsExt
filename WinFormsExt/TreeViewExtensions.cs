@@ -11,7 +11,7 @@ namespace AdamOneilSoftware
             List<T> results = new List<T>();
             foreach (TreeNode node in treeView.Nodes)
             {
-                AddResult(node, results);
+                AddResult(node, results, filter);
                 if (recursive) FindNodesR<T>(node, results, true, filter);
             }
             return results;
@@ -29,7 +29,7 @@ namespace AdamOneilSoftware
             if (parent == null) return;
             foreach (TreeNode node in parent.Nodes)
             {
-                AddResult(node, results);
+                AddResult(node, results, filter);
                 if (recursive) FindNodesR(node, results, true, filter);
             }
         }
