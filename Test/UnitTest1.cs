@@ -24,5 +24,31 @@ namespace Test
         {
             Shell.ViewDocument(@"C:\Users\Adam\Dropbox\Visual Studio 2017\Projects\Postulate.Sql\Postulate.Sql.sln");
         }
+
+        [TestMethod]
+        public void ExcMsg()
+        {
+            try
+            {
+                throw new Exception("Here it is");
+            }
+            catch (Exception exc)
+            {
+                exc.ShowMessage();
+            }
+        }
+
+        [TestMethod]
+        public void ExcMsgNested()
+        {
+            try
+            {
+                throw new Exception("Outer message", new Exception("Inner message", new Exception("Third level of nesting")));
+            }
+            catch (Exception exc)
+            {
+                exc.ShowMessage();
+            }
+        }
     }
 }
